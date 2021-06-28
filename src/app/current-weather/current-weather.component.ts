@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,Input } from '@angular/core';
 import { ICurrentweather } from '../icurrent-weather';
-import { WeatherService } from '../weather.service';
+
 
 @Component({
   selector: 'app-current-weather',
@@ -8,7 +8,7 @@ import { WeatherService } from '../weather.service';
   styleUrls: ['./current-weather.component.css']
 })
 export class CurrentWeatherComponent implements OnInit {
-  current:ICurrentweather={
+  @Input() current:ICurrentweather={
     city:'',
     country:'',
     date:new Date(),
@@ -16,12 +16,12 @@ export class CurrentWeatherComponent implements OnInit {
     description:'',
     temperature:0
   }
-  constructor(private weatherService: WeatherService) {
+  constructor() {
     
    }
 
   ngOnInit(): void {
-    this.weatherService.getCurrentWeather('Redmond','US').subscribe(data=>this.current = data)  
+   
   }
 
 }
