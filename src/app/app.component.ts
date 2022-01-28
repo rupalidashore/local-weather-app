@@ -17,7 +17,7 @@ export class AppComponent {
     description:'',
     temperature:0
   }
-  constructor(private weatherService:WeatherService){}
+  constructor(private weatherService:WeatherService){}//injecting a weather service to app component
   doSearch(searchValue:string){
     const userInput=searchValue.split(',').map(s => s.trim());
         this.weatherService.getCurrentWeather(userInput[0],userInput.length > 1 ? userInput[1]:undefined).subscribe((data => this.currentWeather = data))
